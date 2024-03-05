@@ -1,0 +1,1 @@
+insert into mark (mark,model,capacity) values ('vw','passat','MEDIUM');
