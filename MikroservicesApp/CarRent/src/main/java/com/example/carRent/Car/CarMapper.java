@@ -16,26 +16,26 @@ public class CarMapper {
         this.markRepository = markRepository;
     }
 
-    CarDto EntityToDto(Car car) {
-        return new CarDto(car.getPrice(), car.getStartRent(), car.getEndRent(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue());
+    RentCarDto EntityToDto(Car car) {
+        return new RentCarDto(car.getPrice(), car.getStartRent(), car.getEndRent(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue());
     }
 
-    Car dtoToEntity(CarDto carDto) {
+    Car dtoToEntity(RentCarDto rentCarDto) {
         Car car = new Car();
-        car.setPrice(carDto.price());
-        car.setStartRent(carDto.startRent());
-        car.setEndRent(carDto.endRent());
-        Mark mark = markRepository.findByMarkAndModel(carDto.mark(), carDto.model()).orElseThrow();
+        car.setPrice(rentCarDto.price());
+        car.setStartRent(rentCarDto.startRent());
+        car.setEndRent(rentCarDto.endRent());
+        Mark mark = markRepository.findByMarkAndModel(rentCarDto.mark(), rentCarDto.model()).orElseThrow();
 
         car.setMark(mark);
         return car;
     }
 
-    NewCarDto newCarDto(Car car) {
-        return new NewCarDto(car.getPrice(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue());
+    CarDto newCarDto(Car car) {
+        return new CarDto(car.getPrice(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue(), car.isAvailable());
     }
 
-    Car newCarDtoToEntity(NewCarDto dto) {
+    Car newCarDtoToEntity(CarDto dto) {
         Car car = new Car();
         car.setPrice(dto.price());
         Optional<Mark> byMarkAndModel = markRepository.findByMarkAndModel(dto.mark(), dto.model());
@@ -51,6 +51,7 @@ public class CarMapper {
             car.setMark(save);
             car.setMark(mark);
         }
+        car.setAvailable(dto.available());
         return car;
 
 

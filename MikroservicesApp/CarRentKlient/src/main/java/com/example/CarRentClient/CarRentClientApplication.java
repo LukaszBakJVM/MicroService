@@ -9,6 +9,10 @@ public class CarRentClientApplication {
     public static void main(String[] args) {
 
 
+
+
+
+
         SpringApplication.run(CarRentClientApplication.class, args);
     }
 

@@ -16,11 +16,11 @@ public class UserController {
         this.carService = carService;
     }
     @GetMapping("/available")
-    ResponseEntity<List<NewCarDto>> availableCars() {
+    ResponseEntity<List<CarDto>> availableCars() {
         return ResponseEntity.ok(carService.findAllCars());
     }
     @GetMapping("/rented")
-    ResponseEntity<List<NewCarDto>>rentedCars(){
+    ResponseEntity<List<CarDto>>rentedCars(){
         return ResponseEntity.ok(carService.availableCars(false));
     }
 

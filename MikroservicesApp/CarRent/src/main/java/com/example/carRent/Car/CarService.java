@@ -19,15 +19,15 @@ public class CarService {
         this.carMapper = carMapper;
     }
 
-    CarDto rentCar(CarDto carDto) {
-        Car car = carMapper.dtoToEntity(carDto);
+    RentCarDto rentCar(RentCarDto rentCarDto) {
+        Car car = carMapper.dtoToEntity(rentCarDto);
 
         carRepository.save(car);
         return carMapper.EntityToDto(car);
     }
 
-    NewCarDto newCarDto(NewCarDto newCarDto) {
-        Car car = carMapper.newCarDtoToEntity(newCarDto);
+    CarDto newCarDto(CarDto carDto) {
+        Car car = carMapper.newCarDtoToEntity(carDto);
 
         Car save = carRepository.save(car);
 
@@ -43,12 +43,12 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
-    List<NewCarDto> availableCars(boolean available) {
+    List<CarDto> availableCars(boolean available) {
         return carRepository.findAllByAvailable(available)
                 .stream().map(carMapper::newCarDto).toList();
     }
 
-    List<NewCarDto> findAllCars() {
+    List<CarDto> findAllCars() {
         return carRepository.findAll().stream().map(carMapper::newCarDto).toList();
     }
 

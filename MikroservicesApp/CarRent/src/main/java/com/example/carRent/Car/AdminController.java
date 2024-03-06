@@ -22,10 +22,10 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    ResponseEntity<NewCarDto> addNewCar(@RequestBody NewCarDto dto) {
-        NewCarDto newCarDto = carService.newCarDto(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(newCarDto).toUri();
-        return ResponseEntity.created(uri).body(newCarDto);
+    ResponseEntity<CarDto> addNewCar(@RequestBody CarDto dto) {
+        CarDto carDto = carService.newCarDto(dto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(carDto).toUri();
+        return ResponseEntity.created(uri).body(carDto);
 
     }
 

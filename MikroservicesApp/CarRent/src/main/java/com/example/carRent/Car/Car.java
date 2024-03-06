@@ -14,7 +14,7 @@ public class Car {
     private BigDecimal price;
     private LocalDateTime startRent;
     private LocalDateTime endRent;
-    private boolean available = true;
+    private boolean available;
     @ManyToOne()
     private Mark mark;
 
