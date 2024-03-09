@@ -1,4 +1,4 @@
 package com.example.CarRentClient.Client;
 
-public record ClientDto(String firstName,String lastName,String creditCardNumber) {
+public record ClientDto(long id, String firstName, String lastName, String creditCardNumber) {
 }

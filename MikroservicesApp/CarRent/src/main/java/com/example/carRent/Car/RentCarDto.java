@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 record RentCarDto(BigDecimal price, LocalDateTime startRent, LocalDateTime endRent, String mark, String model,
-                  String value) {
+                  String value ,boolean available) {
 }

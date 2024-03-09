@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Mapper {
-    ClientRegistrationAndLogin dtoToEntity(ClientDto dto){
-        ClientRegistrationAndLogin client=new ClientRegistrationAndLogin();
+    ClientRegistrationAndLogin dtoToEntity(ClientDto dto) {
+        ClientRegistrationAndLogin client = new ClientRegistrationAndLogin();
         client.setFirstName(dto.firstName());
         client.setLastName(dto.firstName());
         client.setCreditCardNumber(dto.creditCardNumber());
@@ -13,7 +13,7 @@ public class Mapper {
 
     }
 
-    ClientDto entityToDto(ClientRegistrationAndLogin client){
-        return new ClientDto(client.getFirstName(), client.getLastName(), client.getCreditCardNumber());
+    ClientDto entityToDto(ClientRegistrationAndLogin client) {
+        return new ClientDto(client.getId(), client.getFirstName(), client.getLastName(), client.getCreditCardNumber());
     }
 }

@@ -30,4 +30,5 @@ public class ClientController {
         return ResponseEntity.ok(clientService.findAllClients());
     }
 
+
 }

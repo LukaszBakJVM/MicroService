@@ -16,9 +16,7 @@ public class CarMapper {
         this.markRepository = markRepository;
     }
 
-    RentCarDto EntityToDto(Car car) {
-        return new RentCarDto(car.getPrice(), car.getStartRent(), car.getEndRent(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue());
-    }
+
 
     Car dtoToEntity(RentCarDto rentCarDto) {
         Car car = new Car();
