@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebConfiguration {
-    @Value("${baseCatUrl}")
+    @Value("${baseCarUrl}")
     private String baseClientUrl;
 
     @Bean
