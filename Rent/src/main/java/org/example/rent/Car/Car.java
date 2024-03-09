@@ -1,4 +1,4 @@
 package org.example.rent.Car;
 
-public record Car(long carId,boolean available) {
+public record Car(long carId) {
 }

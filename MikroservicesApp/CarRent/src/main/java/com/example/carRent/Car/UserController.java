@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping ("/rent/{id}")
-    ResponseEntity<Long> rent(@PathVariable long id) {
+    ResponseEntity<CarDto> rent(@PathVariable long id) {
         return ResponseEntity.ok(carService.findById(id));
 
 

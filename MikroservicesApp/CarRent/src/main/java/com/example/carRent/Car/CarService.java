@@ -53,9 +53,9 @@ public class CarService {
     }
 
 
-long findById(long id){
+CarDto findById(long id){
     Car car = carRepository.findById(id).orElseThrow();
-    return car.getId();
+    return carMapper.newCarDto(car);
 }
 
 }
