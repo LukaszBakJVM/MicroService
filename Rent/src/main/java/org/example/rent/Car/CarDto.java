@@ -1,4 +1,6 @@
 package org.example.rent.Car;
 
-public record CarDto(long carId) {
+import java.time.LocalDateTime;
+
+public record CarDto(long carId, LocalDateTime startRent, LocalDateTime endRent) {
 }

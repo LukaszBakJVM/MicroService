@@ -19,11 +19,10 @@ public class CarService {
         this.carMapper = carMapper;
     }
 
-    DtoRent rentCar(long id) {
-        Car car = carRepository.findById(id).orElseThrow();
-        car.setAvailable(false);
-        Car save = carRepository.save(car);
-        return carMapper.rentCarDtoFromEntity(save);
+    void rentCar(DtoRent dtoRent) {
+        Car car = carMapper.rentCarDtoToEntity(dtoRent);
+        carRepository.save(car);
+
 
     }
 
@@ -53,6 +52,11 @@ public class CarService {
     CarDto findById(long id) {
         Car car = carRepository.findById(id).orElseThrow();
         return carMapper.newCarDto(car);
+    }
+
+    DtoRent rentById(long id) {
+        Car car = carRepository.findById(id).orElseThrow();
+        return carMapper.rentCarDtoFromEntity(car);
     }
 
 

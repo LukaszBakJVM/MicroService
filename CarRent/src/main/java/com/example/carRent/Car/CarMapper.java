@@ -32,6 +32,12 @@ public class CarMapper {
     DtoRent rentCarDtoFromEntity(Car car){
         return new DtoRent(car.getStartRent(),car.getEndRent());
     }
+    Car rentCarDtoToEntity(DtoRent dto){
+        Car car = new Car();
+        car.setStartRent(dto.startRent());
+        car.setEndRent(dto.endRent());
+        return car;
+    }
 
     CarDto newCarDto(Car car) {
         return new CarDto(car.getId(),car.getPrice(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue(), car.isAvailable());

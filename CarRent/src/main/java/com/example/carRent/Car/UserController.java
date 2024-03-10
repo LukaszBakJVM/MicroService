@@ -38,8 +38,10 @@ public class UserController {
     @PatchMapping("/{id}")
     ResponseEntity<?> rentCar(@PathVariable Long id, @RequestBody JsonMergePatch patch) {
         try {
-            DtoRent dtoRent = carService.rentCar(id);
-            applyPatch(dtoRent, patch);
+            DtoRent dtoRentBuId = carService.rentById(id);
+
+            DtoRent dtoRent = applyPatch(dtoRentBuId, patch);
+           carService.rentCar(dtoRent);
 
         } catch (JsonPatchException | JsonProcessingException e) {
             return ResponseEntity.internalServerError().build();
