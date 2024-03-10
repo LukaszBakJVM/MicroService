@@ -24,4 +24,9 @@ public class ClientService {
         return repository.findAll().stream().map(mapper::entityToDto).toList();
     }
 
+
+    ClientDto findById(long id) {
+        ClientRegistrationAndLogin clientRegistrationAndLogin = repository.findById(id).orElseThrow();
+        return mapper.entityToDto(clientRegistrationAndLogin);
+    }
 }

@@ -7,4 +7,7 @@ public class CarMapper {
     CarDto map(Car car){
         return new CarDto(car.id());
     }
+    RentCarDto rent(Car car){
+        return new RentCarDto(car.id(),car.startRent(),car.endRent());
+    }
 }

@@ -29,6 +29,10 @@ public class ClientController {
     ResponseEntity<List<ClientDto>> findAll() {
         return ResponseEntity.ok(clientService.findAllClients());
     }
+    @GetMapping("/{id}")
+    ResponseEntity<ClientDto>findById(@PathVariable long id){
+        return ResponseEntity.ok(clientService.findById(id));
+    }
 
 
 }
