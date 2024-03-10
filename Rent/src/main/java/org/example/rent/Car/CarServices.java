@@ -22,7 +22,7 @@ public class CarServices {
 
 
     Mono<CarDto> findId(long id) {
-        return webClient.get().uri("/car/rent/{id}", id).accept(MediaType.APPLICATION_JSON).retrieve().bodyToMono(Car.class)
+        return webClient.get().uri(baseUrl+"/car/rent/{id}", id).accept(MediaType.APPLICATION_JSON).retrieve().bodyToMono(Car.class)
                 .map(carMapper::map);
 
 
