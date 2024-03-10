@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/rent")
@@ -15,8 +16,8 @@ public class RentController {
         this.rentService = rentService;
     }
     @PostMapping
-    ResponseEntity<RentDto>rentCar(@RequestBody RentDto dto){
-        RentDto rentDto = rentService.rentCar(dto);
+    ResponseEntity<RentDto>rentCar(@RequestBody RentDto dto, @RequestParam LocalDateTime start ,@RequestParam LocalDateTime end){
+        RentDto rentDto = rentService.rentCar(dto,start,end);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().buildAndExpand(rentDto).toUri();
         return ResponseEntity.created(uri).body(rentDto);
 

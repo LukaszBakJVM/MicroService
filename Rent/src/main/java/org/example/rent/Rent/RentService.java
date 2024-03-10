@@ -4,6 +4,8 @@ import org.example.rent.Car.CarServices;
 import org.example.rent.Client.ClientService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class RentService {
     private final RentRepository repository;
@@ -17,16 +19,16 @@ public class RentService {
         this.carServices = carServices;
         this.clientService = clientService;
     }
-    RentDto rentCar(RentDto dto){
+    RentDto rentCar(RentDto dto,LocalDateTime start , LocalDateTime end){
         Rent rent = rentMapper.dtoToEntity(dto);
         Rent save = repository.save(rent);
-        rentCar(save.getCarId());
+        rentCar(save.getCarId(),start,end);
         return rentMapper.entityToDto(save);
 
 
     }
-    private void  rentCar(long carId){
-        carServices.rent(carId).subscribe();
+    private void  rentCar(long carId, LocalDateTime start , LocalDateTime end){
+        carServices.rent(carId,start,end).subscribe();
     }
 
 
