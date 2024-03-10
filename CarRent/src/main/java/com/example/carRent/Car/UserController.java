@@ -41,7 +41,7 @@ public class UserController {
             DtoRent dtoRentBuId = carService.rentById(id);
 
             DtoRent dtoRent = applyPatch(dtoRentBuId, patch);
-           carService.rentCar(dtoRent);
+            carService.rentCar(dtoRent);
 
         } catch (JsonPatchException | JsonProcessingException e) {
             return ResponseEntity.internalServerError().build();
