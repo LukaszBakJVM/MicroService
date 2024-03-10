@@ -16,12 +16,8 @@ public class CarService {
         this.carMapper = carMapper;
         this.webClient = webClient.build();
     }
-    Mono<List<CarDto>>allAvailableCars(){
-    return     webClient.get().uri("/car/available")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve().bodyToFlux(Car.class)
-                .filter(Car::available)
-                .map(carMapper::carToDto)
-                .collectList();
+
+    Mono<List<CarDto>> allAvailableCars() {
+        return webClient.get().uri("/car/allCars").accept(MediaType.APPLICATION_JSON).retrieve().bodyToFlux(Car.class).filter(Car::available).map(carMapper::carToDto).collectList();
     }
 }

@@ -43,19 +43,15 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
-    List<CarDto> availableCars(boolean available) {
-        return carRepository.findAllByAvailable(available)
-                .stream().map(carMapper::newCarDto).toList();
-    }
 
     List<CarDto> findAllCars() {
         return carRepository.findAll().stream().map(carMapper::newCarDto).toList();
     }
 
 
-CarDto findById(long id){
-    Car car = carRepository.findById(id).orElseThrow();
-    return carMapper.newCarDto(car);
-}
+    CarDto findById(long id) {
+        Car car = carRepository.findById(id).orElseThrow();
+        return carMapper.newCarDto(car);
+    }
 
 }

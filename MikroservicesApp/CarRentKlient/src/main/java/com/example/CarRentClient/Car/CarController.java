@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/client/car")
 public class CarController {
     private final CarService carService;
 

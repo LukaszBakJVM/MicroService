@@ -30,7 +30,7 @@ public class CarMapper {
     }
 
     CarDto newCarDto(Car car) {
-        return new CarDto(car.getPrice(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue(), car.isAvailable());
+        return new CarDto(car.getId(),car.getPrice(), car.getMark().getMark(), car.getMark().getModel(), car.getMark().getCapacity().getValue(), car.isAvailable());
     }
 
     Car newCarDtoToEntity(CarDto dto) {

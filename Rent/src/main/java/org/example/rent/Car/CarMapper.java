@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarMapper {
     CarDto map(Car car){
-        return new CarDto(car.carId());
+        return new CarDto(car.id());
     }
 }
