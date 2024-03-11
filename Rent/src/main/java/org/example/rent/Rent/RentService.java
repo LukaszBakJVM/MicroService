@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -26,7 +28,7 @@ public class RentService {
 
     RentDto rentCar(RentDto dto, LocalDateTime start, LocalDateTime end) {
         BigDecimal bigDecimal = priceOfRent(start, end, dto.carId());
-        dto = new RentDto(dto.carId(),dto.clientId(),bigDecimal);
+        dto = new RentDto(dto.carId(), dto.clientId(), bigDecimal);
         Rent rent = rentMapper.dtoToEntity(dto);
 
 
@@ -51,9 +53,21 @@ public class RentService {
 
     }
 
-    private BigDecimal priceOfRent(LocalDateTime start, LocalDateTime end,long id) {
+    private BigDecimal priceOfRent(LocalDateTime start, LocalDateTime end, long id) {
         long days = Duration.between(start, end).toDays();
         BigDecimal price = priceById(id);
         return price.multiply(BigDecimal.valueOf(days));
+    }
+
+    HashMap<Long, List<Long>> allCarsByClientId(long clientId) {
+        HashMap<Long, List<Long>> longListHashMap = new HashMap<>();
+
+        List<Rent> allByClientId = repository.findAllByClientId(clientId);
+        Long l = allByClientId.stream().map(Rent::getClientId).findFirst().orElseThrow();
+        List<Long> collect = allByClientId.stream().map(Rent::getCarId).toList();
+        longListHashMap.put(l, collect);
+
+        return longListHashMap;
+
     }
 }
