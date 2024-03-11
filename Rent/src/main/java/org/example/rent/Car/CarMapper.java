@@ -10,4 +10,8 @@ public class CarMapper {
     RentCarDto rent(Car car){
         return new RentCarDto(car.id(),car.startRent(),car.endRent());
     }
+
+    CarPrice price(Car car){
+        return new CarPrice(car.id(),car.price());
+    }
 }

@@ -1,6 +1,7 @@
 package org.example.rent.Car;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,6 +26,12 @@ public class CarServices {
     public Mono<RentTime> rent(long id, LocalDateTime start, LocalDateTime end) {
         return webClient.patch().uri(baseUrl + "/car/{id}", id).body(BodyInserters.fromValue(new RentTime(start, end))).retrieve().bodyToMono(RentTime.class);
 
+
+    }
+    public Mono<CarPrice>price(long id){
+        return webClient.get().uri(baseUrl+"/car/rent/{id}",id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve().bodyToMono(Car.class).map(carMapper::price);
 
     }
 

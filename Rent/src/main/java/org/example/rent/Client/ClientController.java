@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/rent")
+@RequestMapping("/client/rent")
 public class ClientController {
     private final ClientService clientService;
 
