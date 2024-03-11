@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
 
@@ -28,8 +29,5 @@ public class RentController {
 
 
     }
-@GetMapping ("/{id}")
-    ResponseEntity<Mono<CarPrice>>byId(@PathVariable long id){
-        return ResponseEntity.ok(carServices.price(id));
-}
+
 }

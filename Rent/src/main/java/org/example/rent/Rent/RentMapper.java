@@ -8,9 +8,10 @@ public class RentMapper {
         Rent rent = new Rent();
         rent.setCarId(dto.carId());
         rent.setClientId(dto.clientId());
+        rent.setAmount(dto.price());
         return rent;
     }
     RentDto entityToDto(Rent rent){
-        return new RentDto(rent.getCarId(), rent.getClientId());
+        return new RentDto(rent.getCarId(), rent.getClientId(),rent.getAmount());
     }
 }

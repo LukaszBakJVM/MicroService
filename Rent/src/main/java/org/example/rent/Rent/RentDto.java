@@ -1,4 +1,6 @@
 package org.example.rent.Rent;
 
-public record RentDto(long carId, long clientId) {
+import java.math.BigDecimal;
+
+public record RentDto(long carId, long clientId, BigDecimal price ) {
 }
