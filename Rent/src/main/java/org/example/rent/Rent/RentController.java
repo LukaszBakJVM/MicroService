@@ -30,7 +30,7 @@ public class RentController {
 
     }
 
-    @GetMapping("/rrrrr")
+    @GetMapping("/rentedCarsByclient")
     ResponseEntity<HashMap<Long, List<Long>>> aaa(@RequestParam long id) {
         return ResponseEntity.ok(rentService.allCarsByClientId(id));
     }
